@@ -1,0 +1,48 @@
+.menuScroll {
+	align-items: stretch;
+	border: 4px solid transparent;
+	border-image: url(../../assets/images/ScrollBorder-Gray.png) 4 repeat;
+	display: flex;
+	height: 0px;
+	justify-content: stretch;
+	overflow: hidden;
+}
+
+.menuScroll > * {
+	align-items: center;
+	background-color: #808080;
+	display: flex;
+	height: calc(100% - 4px);
+	justify-content: center;
+	padding: 2px 4px;
+	width: 100%;
+}
+
+.menuScroll.show-enter, .menuScroll.show-appear {
+	height: 0px;
+	pointer-events: none;
+}
+
+.menuScroll.show-enter-active, .menuScroll.show-appear-active {
+	height: 100%;
+	transition: 0.5s;
+}
+
+.menuScroll.show-enter-done {
+	height: 100%;
+}
+
+.menuScroll.show-exit {
+	height: 100%;
+	pointer-events: none;
+}
+
+.menuScroll.show-exit-active {
+	height: 0px;
+	transition: 0.5s;
+}
+
+.menuScroll.show-exit-done {
+	height: 0px;
+	pointer-events: none;
+}

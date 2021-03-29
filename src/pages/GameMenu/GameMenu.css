@@ -1,0 +1,44 @@
+#gameMenu {
+	background-image: url("../../assets/images/titleBG.png");
+}
+
+#gameMenu > * {
+	bottom: 0px;
+	display: none;
+	left: 0px;
+	opacity: 0;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+#gameMenu.show-enter > *, #gameMenu.show-appear > * {
+	display: flex;
+	opacity: 0;
+	pointer-events: none;
+}
+
+#gameMenu.show-enter-active > *, #gameMenu.show-appear-active > * {
+	opacity: 1;
+	transition: 1s;
+}
+
+#gameMenu.show-enter-done > * {
+	display: flex;
+	opacity: 1;
+}
+
+#gameMenu.show-exit > * {
+	display: flex;
+	opacity: 1;
+	pointer-events: none;
+}
+
+#gameMenu.show-exit-active > * {
+	opacity: 0;
+	transition: 0.5s;
+}
+
+#gameMenu.show-exit-done > * {
+	display: none;
+}

@@ -1,0 +1,12 @@
+.skillDisplay > div {
+	display: flex;
+	justify-content: space-between;
+}
+
+.skillDisplay > div > div:first-child {
+	color: #d0d0d0;
+}
+
+.skillDisplay > div > div:last-child {
+	color: #ffe080;
+}

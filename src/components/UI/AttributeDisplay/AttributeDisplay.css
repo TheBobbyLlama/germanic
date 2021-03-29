@@ -1,0 +1,12 @@
+.attributeDisplay > div {
+	display: flex;
+	justify-content: space-between;
+}
+
+.attributeDisplay > div > div:first-child {
+	color: #d0d0d0;
+}
+
+.attributeDisplay > div > div:last-child {
+	color: #ffe080;
+}

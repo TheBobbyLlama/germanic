@@ -1,0 +1,60 @@
+@font-face {
+  font-family: pixel-standard;
+  src: url('./assets/fonts/pixelfj8pt1.normal.ttf');
+}
+
+@font-face {
+  font-family: pixel-bold;
+  src: url('./assets/fonts/manaspace.regular.ttf');
+}
+
+@font-face {
+  font-family: pixel-large;
+  src: url('./assets/fonts/alagard.ttf');
+}
+
+#screenContainer {
+  bottom: 0px;
+  box-shadow: 0px 0px 5vw 0px #404040;
+  height: 100%;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  width: 100%;
+}
+
+#viewport {
+  color: white;
+  cursor:url(./assets/images/Pointer.png), default;
+  font-family: pixel-standard;
+  font-size: 8px;
+  height: 360px;
+  image-rendering: pixelated;
+  position: relative;
+  transform-origin: top left;
+  width: 480px;
+}
+
+#viewport > div {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#viewport h1 {
+  font-family: pixel-large;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+#viewport h2 {
+  font-family: pixel-bold;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+#viewport .cursorActive {
+  cursor:url(./assets/images/PointerActive.png) 9 0, pointer;
+}

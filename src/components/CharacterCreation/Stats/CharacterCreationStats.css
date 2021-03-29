@@ -1,0 +1,55 @@
+#charCreateStats {
+	align-items: stretch;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+#charCreateStats h1 {
+	margin-bottom: 4px;
+}
+
+#statContainer {
+	display: grid;
+	flex-basis: 100%;
+	grid-column-gap: 8px;
+	grid-template-columns: 84px 84px 25% 20%;
+	grid-template-rows: auto auto;
+}
+
+#statContainer > div:first-child > div:not(:first-child) {
+	margin-top: 4px;
+}
+
+.attributeDisplay {
+	margin-left: 20px;
+}
+
+#createCharacterButtonHolder {
+	align-items: flex-end;
+	display: flex;
+	grid-column: 1/span 4;
+	justify-content: center;
+	padding-bottom: 20px;
+}
+
+#createCharacterButtonHolder > * {
+	font-family: pixel-large;
+  	font-size: 16px;
+	margin: 0px 16px;
+}
+
+#createCharacterButtonHolder > *:hover {
+	text-shadow: 0 0 1px #ffe080;
+}
+
+#createCharacterButtonHolder > *.inactive {
+	color: #707070;
+	pointer-events: none;
+}
+
+#statTooltip {
+	color: #ffe080;
+	grid-column: 1/span 4;
+	height: 16px;
+}
