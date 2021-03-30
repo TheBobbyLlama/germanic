@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import MenuScroll from "../../components/MenuScroll/MenuScroll";
+import MenuScroll from "../UI/MenuScroll/MenuScroll";
 import CharacterCreationStats from "../CharacterCreation/Stats/CharacterCreationStats";
+
 import './NewGame.css';
 
 function NewGame({transitionCallback}) {

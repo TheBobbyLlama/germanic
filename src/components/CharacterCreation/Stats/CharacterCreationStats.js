@@ -4,12 +4,17 @@ import { systemLib, Character } from "../../../lib/systemLib";
 import ListSelect from "../../UI/ListSelect/ListSelect";
 import AttributeDisplay from "../../UI/AttributeDisplay/AttributeDisplay";
 import SkillDisplay from "../../UI/SkillDisplay/SkillDisplay";
+
+import { SET_PLAYER_CHARACTER } from "../../../utils/actions";
+import { useStoreContext } from "../../../utils/GlobalState";
+
 import './CharacterCreationStats.css';
 
 function CharacterCreationStats({props, closeScroll}) {
 	const [ character, setCharacter ] = useState(new Character());
 	const [ tooltipText, setToolTipText ] = useState("");
 	const [curTimeout, setCurTimeout ] = useState(undefined);
+	const [, dispatch] = useStoreContext();
 
 	const calculateValidOccupations = (sex, family) => {
 		let templates = systemLib.characterBackgroundTemplate;
@@ -65,6 +70,10 @@ function CharacterCreationStats({props, closeScroll}) {
 	}
 
 	const proceedToCustomization = () => {
+		dispatch({
+			type: SET_PLAYER_CHARACTER,
+			player: character
+		});
 		closeScroll();
 		setCurTimeout(setTimeout(() => { props.changeMode(1); }, 500));
 	}

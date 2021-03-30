@@ -1,4 +1,5 @@
 import { useResizeDetector } from 'react-resize-detector';
+import { StoreProvider } from './utils/GlobalState';
 import './App.css';
 
 import GameMenu from "./pages/GameMenu/GameMenu";
@@ -10,7 +11,9 @@ function App() {
   return (
     <div id="screenContainer" ref={ref}>
       <div id="viewport" style={{transform: "scale(" + scaleFactor +")"}}>
-        <GameMenu />
+        <StoreProvider>
+          <GameMenu />
+        </StoreProvider>
       </div>
     </div>
   );
