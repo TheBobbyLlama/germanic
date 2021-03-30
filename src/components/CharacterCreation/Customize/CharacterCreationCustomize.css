@@ -1,0 +1,134 @@
+#charCreateCustomization {
+	align-items: stretch;
+	flex-direction: column;
+}
+
+#charCreateCustomization > *:not(:last-child) {
+	margin-bottom: 4px;
+}
+
+#createCharacterSprite {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#characterSpriteHolder {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+#characterSpriteHolder .rotateLeft {
+	background: url('../../../assets/images/UI/Rotate.png');
+	height: 8px;
+	width: 8px;
+}
+
+#characterSpriteHolder .rotateRight {
+	background: url('../../../assets/images/UI/Rotate.png');
+	height: 8px;
+	transform: scaleX(-1);
+	width: 8px;
+}
+
+#characterSpriteFrame {
+	background-color: rgba(0, 0, 0, 0.5);
+	border-bottom: Solid 1px rgba(255, 255, 255, 0.5);
+	border-left: Solid 1px rgba(0, 0, 0, 0.5);
+	border-right: Solid 1px rgba(255, 255, 255, 0.5);
+	border-top: Solid 1px rgba(0, 0, 0, 0.5);
+	height: 48px;
+	position: relative;
+	width: 48px;
+}
+
+#characterSpriteFrame > * {
+	height: 48px;
+	position: absolute;
+	width: 48px;
+}
+
+#characterSpriteFrame.rotate0 > * {
+	background-position: 0px -4px;
+}
+
+#characterSpriteFrame.rotate1 > * {
+	background-position: 48px -4px;
+}
+
+#characterSpriteFrame.rotate2 > * {
+	background-position: 96px -4px;
+}
+
+#characterSpriteFrame.rotate3 > * {
+	background-position: 144px -4px;
+}
+
+#characterSpriteFrame.rotate4 > * {
+	background-position: 192px -4px;
+}
+
+#characterSpriteFrame.rotate5 > * {
+	background-position: 240px -4px;
+}
+
+#characterSpriteFrame.rotate6 > * {
+	background-position: 288px -4px;
+}
+
+#characterSpriteFrame.rotate7 > * {
+	background-position: 336px -4px;
+}
+
+#characterSpriteOptions {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+#characterSpriteOptions > div {
+	display: flex;
+	justify-content: center;
+}
+
+#characterSpriteOptions > div > div:nth-child(2) {
+	color: rgba(255, 255, 255, 0.5);
+	text-align: center;
+	width: 34px;
+}
+
+#characterNameSection {
+	display: flex;
+	justify-content: space-around
+}
+
+#characterNameShort {
+	width: 80px;
+}
+
+#characterName {
+	width: 200px;
+}
+
+#createCharacterSprite {
+	flex-basis: 100%;
+}
+
+#createCharacterButtonHolder {
+	align-items: flex-end;
+	display: flex;
+	grid-column: 1/span 4;
+	justify-content: center;
+	padding-bottom: 20px;
+}
+
+#createCharacterButtonHolder > * {
+	font-family: pixel-large;
+  	font-size: 16px;
+	margin: 0px 16px;
+}
+
+#createCharacterButtonHolder > *.inactive {
+	color: #707070;
+	pointer-events: none;
+}

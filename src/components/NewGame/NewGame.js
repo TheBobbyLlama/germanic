@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MenuScroll from "../UI/MenuScroll/MenuScroll";
 import CharacterCreationStats from "../CharacterCreation/Stats/CharacterCreationStats";
+import CharacterCreationCustomize from "../CharacterCreation/Customize/CharacterCreationCustomize";
 
 import './NewGame.css';
 
@@ -20,7 +21,7 @@ function NewGame({transitionCallback}) {
 	return (
 		<div id="newGame">
 			{(creationMode === 0) ? <MenuScroll MyComponent={CharacterCreationStats} height={284} width={420} delay={(lastMode >= 0) ? 200 : 500} props={{changeMode}} /> : <></>}
-			{(creationMode === 1) ? <MenuScroll MyComponent={CharacterCreationStats} height={284} width={420} delay={200} props={{changeMode}} /> : <></>}
+			{(creationMode === 1) ? <MenuScroll MyComponent={CharacterCreationCustomize} height={284} width={420} delay={200} props={{changeMode}} /> : <></>}
 		</div>
 	);
 }

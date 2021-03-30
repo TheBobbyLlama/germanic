@@ -6,7 +6,7 @@ function MainMenu({ transitionCallback }) {
 		<div id="mainMenu">
 			<h1>Germanic</h1>
 			<div id="mainList">
-				<div className="cursorActive" onClick={() => {transitionCallback(1)}}>{localize("MAIN_START_NEW_GAME")}</div>
+				<div className="cursorGlow" onClick={() => {transitionCallback(1)}}>{localize("MAIN_START_NEW_GAME")}</div>
 			</div>
 		</div>
 	);

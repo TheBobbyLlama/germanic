@@ -25,7 +25,7 @@
 
 #viewport {
   color: white;
-  cursor:url(./assets/images/Pointer.png), default;
+  cursor:url(./assets/images/UI/Pointer.png), default;
   font-family: pixel-standard;
   font-size: 8px;
   height: 360px;
@@ -55,6 +55,26 @@
   font-weight: normal;
 }
 
-#viewport .cursorActive {
-  cursor:url(./assets/images/PointerActive.png) 9 0, pointer;
+#viewport input[type='text'] {
+  background-color: transparent;
+	border-bottom: Solid 1px rgba(255, 255, 255, 0.5);
+	border-left: Solid 1px rgba(0, 0, 0, 0.5);
+	border-right: Solid 1px rgba(255, 255, 255, 0.5);
+	border-top: Solid 1px rgba(0, 0, 0, 0.5);
+  color: white;
+  cursor:url(./assets/images/UI/PointerText.png) 4 9, text;
+  font-family: pixel-standard;
+  font-size: 8px;
+}
+
+#viewport input[type='text']::placeholder {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+#viewport .cursorActive, #viewport .cursorGlow {
+  cursor:url(./assets/images/UI/PointerActive.png) 9 0, pointer;
+}
+
+#viewport .cursorGlow:hover {
+	text-shadow: 0 0 1px white;
 }

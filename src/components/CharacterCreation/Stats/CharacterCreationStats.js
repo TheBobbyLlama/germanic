@@ -11,10 +11,10 @@ import { useStoreContext } from "../../../utils/GlobalState";
 import './CharacterCreationStats.css';
 
 function CharacterCreationStats({props, closeScroll}) {
-	const [ character, setCharacter ] = useState(new Character());
+	const [state, dispatch] = useStoreContext();
+	const [ character, setCharacter ] = useState(state.party.player || new Character());
 	const [ tooltipText, setToolTipText ] = useState("");
 	const [curTimeout, setCurTimeout ] = useState(undefined);
-	const [, dispatch] = useStoreContext();
 
 	const calculateValidOccupations = (sex, family) => {
 		let templates = systemLib.characterBackgroundTemplate;
@@ -69,7 +69,7 @@ function CharacterCreationStats({props, closeScroll}) {
 		setCharacter(new Character({...character, background}));
 	}
 
-	const proceedToCustomization = () => {
+	const finishStats = () => {
 		dispatch({
 			type: SET_PLAYER_CHARACTER,
 			player: character
@@ -78,7 +78,11 @@ function CharacterCreationStats({props, closeScroll}) {
 		setCurTimeout(setTimeout(() => { props.changeMode(1); }, 500));
 	}
 
-	const returnToMainMenu = () => {
+	const cancelStats = () => {
+		dispatch({
+			type: SET_PLAYER_CHARACTER,
+			player: null
+		});
 		closeScroll();
 		setCurTimeout(setTimeout(() => { props.changeMode(-1); }, 500));
 	}
@@ -112,8 +116,8 @@ function CharacterCreationStats({props, closeScroll}) {
 				<AttributeDisplay character={character} tooltipCallback={setTooltip} />
 				<SkillDisplay character={character} tooltipCallback={setTooltip} />
 				<div id="createCharacterButtonHolder">
-					<div className={((character.sex) && (character.family) && (character.temperament) && (character.background)) ? "cursorActive" : "inactive"} onClick={proceedToCustomization}>{localize("BUTTON_CONTINUE")}</div>
-					<div className="cursorActive" onClick={returnToMainMenu}>{localize("BUTTON_BACK")}</div>
+					<div className={((character.sex) && (character.family) && (character.temperament) && (character.background)) ? "cursorGlow" : "inactive"} onClick={finishStats}>{localize("BUTTON_CONTINUE")}</div>
+					<div className="cursorGlow" onClick={cancelStats}>{localize("BUTTON_BACK")}</div>
 				</div>
 			</div>
 			<div id="statTooltip">{tooltipText}</div>

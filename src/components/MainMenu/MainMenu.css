@@ -10,7 +10,3 @@
 	font-family: pixel-large;
   	font-size: 16px;
 }
-
-#mainList > *:hover {
-	text-shadow: 0 0 1px white;
-}

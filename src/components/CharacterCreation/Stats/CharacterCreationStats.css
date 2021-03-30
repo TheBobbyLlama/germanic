@@ -39,10 +39,6 @@
 	margin: 0px 16px;
 }
 
-#createCharacterButtonHolder > *:hover {
-	text-shadow: 0 0 1px #ffe080;
-}
-
 #createCharacterButtonHolder > *.inactive {
 	color: #707070;
 	pointer-events: none;

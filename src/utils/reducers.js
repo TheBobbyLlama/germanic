@@ -2,14 +2,24 @@ import { useReducer } from 'react';
 
 import {
 	SET_PLAYER_CHARACTER,
+	SET_PLAYER_NAME,
 } from './actions';
 
 export const reducer = (state, action) => {
+	let newState;
+
 	switch (action.type) {
 		case SET_PLAYER_CHARACTER:
-			const newState = { ...state };
+			newState = { ...state };
 
 			newState.party.player = action.player;
+
+			return newState;
+		case SET_PLAYER_NAME:
+			newState = { ...state};
+
+			newState.party.player.name = action.name;
+			newState.party.player.shortName = action.shortName;
 
 			return newState;
 		default:
