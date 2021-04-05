@@ -19,7 +19,7 @@ export const reducer = (state, action) => {
 			newState = { ...state};
 
 			newState.party.player.name = action.name;
-			newState.party.player.shortName = action.shortName;
+			newState.party.player.surname = action.surname;
 
 			return newState;
 		default:

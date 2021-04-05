@@ -87,6 +87,7 @@
 }
 
 #characterSpriteOptions > div {
+	align-items: center;
 	display: flex;
 	justify-content: center;
 }
@@ -99,15 +100,19 @@
 
 #characterNameSection {
 	display: flex;
-	justify-content: space-around
+	justify-content: center;
 }
 
-#characterNameShort {
-	width: 80px;
+#characterNameSection > * {
+	margin: 0px 2px;
 }
 
 #characterName {
-	width: 200px;
+	width: 80px;
+}
+
+#characterSurname {
+	width: 100px;
 }
 
 #createCharacterSprite {

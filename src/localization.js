@@ -121,6 +121,7 @@ const localizationList = [
 			[ "BUTTON_START_GAME", "Start the Adventure!" ],
 			[ "BUTTON_CONTINUE", "Continue" ],
 			[ "BUTTON_BACK", "Back" ],
+			[ "BUTTON_RANDOM", "Random" ],
 			[ "CHARACTER_SEX", "Sex" ],
 			[ "CHARACTER_UPBRINGING", "Upbringing" ],
 			[ "CHARACTER_TEMPERAMENT", "Temperament" ],
@@ -129,6 +130,9 @@ const localizationList = [
 			[ "CHARACTER_ATTRIBUTES_DESC", "Attributes are determined by sex, upbringing, occupation, and temperament." ],
 			[ "CHARACTER_SKILLS", "Skills" ],
 			[ "CHARACTER_SKILLS_DESC", "Base skill is Attr/5, with bonuses from upbringing, occupation, and temperament." ],
+			[ "CHARACTER_NAME", "Name" ],
+			[ "CHARACTER_SURNAME", "Surname" ],
+			[ "CHARACTER_NAME_OF", "of {CITY}" ]
 		]
 	}
 ];

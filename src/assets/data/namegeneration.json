@@ -1,0 +1,49 @@
+{
+	"names": {
+		"female": [
+			{
+				"start": [ "B", "H", "K", "M" ],
+				"middle": [ "ath", "er", "ils", "irn", "old" ],
+				"end": [ "a", "en", "i" ]
+			},
+			{
+				"start": [ "Br", "Fr", "Gr", "Kr", "R" ],
+				"middle": [ "enn", "et", "id", "if", "on" ],
+				"end": [ "a", "en", "i" ]
+			},
+			{
+				"start": [ "Ad", "Agn", "Id", "Ils", "Ing", "Olg" ],
+				"end": [ "a", "i" ]
+			}
+		],
+		"male": [
+			{
+				"start": [ "B", "Gr", "H", "Kl", "M", "R" ],
+				"middle": [ "ad", "eb", "ein", "er", "ick", "oll", "ost", "unth" ],
+				"end": [ "acht", "arl", "ert", "gar", "ulf" ]
+			},
+			{
+				"start": [ "Arm", "Er", "Ist", "Ol" ],
+				"end": [ "af", "an", "atz", "ich" ]
+			}
+		]
+	},
+	"surnames": [
+		{
+			"start": [ "Gr", "Kr", "L", "N", "Pf", "R", "Sch", "Schr", "Tr" ],
+			"middle": [ "eid", "en", "eub", "ind", "ing", "ock", "on", "unk" ],
+			"end": [ "eck", "el", "en", "er", "ig", "olt", "osch", "urtz" ]
+		},
+		{
+			"start": [ "Ack", "And", "Empf", "Esch", "Olm" ],
+			"end": [ "el", "en", "er" ]
+		}
+	],
+	"cities": [
+		{
+			"start": [ "D", "Kr", "L", "M", "N", "Pf", "R", "Schl", "Tr", "W" ],
+			"middle": [ "all", "ans", "ast", "echt", "eg", "en", "ess", "or", "unch" ],
+			"end": [ "atz", "burg", "en", "stein" ]
+		}
+	]
+}

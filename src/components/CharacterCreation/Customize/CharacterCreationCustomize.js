@@ -2,6 +2,7 @@ import localize from "../../../localization";
 import { getSpriteCount, getCharacterSkin } from "../../../lib/spriteAtlas"
 import React, { useState, useEffect } from "react";
 
+import { generateRandomName, generateRandomSurname } from "../../../utils/namegeneration";
 import { SET_PLAYER_CHARACTER, SET_PLAYER_NAME } from "../../../utils/actions";
 import { useStoreContext } from "../../../utils/GlobalState";
 
@@ -10,10 +11,15 @@ import './CharacterCreationCustomize.css';
 function CharacterCreationCustomize({props, closeScroll}) {
 	const [state, dispatch] = useStoreContext();
 	const [charName, setCharName] = useState(state.party.player.name || "");
-	const [charNameShort, setCharNameShort] = useState(state.party.player.shortName || "");
+	const [charSurname, setCharSurname] = useState(state.party.player.surname || "");
 	const [rotation, setRotation ] = useState(0);
 	const [curSkin, setCurSkin ] = useState(0);
 	const [curTimeout, setCurTimeout ] = useState(undefined);
+
+	const randomizeCharacterName = () => {
+		setCharName(generateRandomName(null, state.party.player.sex === "SEX_FEMALE"));
+		setCharSurname(generateRandomSurname(null, state.party.player.family === "CHARACTER_FAMILY_NOBILITY"));
+	}
 
 	const changeRotation = (offset) => {
 		let newRotation = (rotation + offset) % 8;
@@ -53,9 +59,9 @@ function CharacterCreationCustomize({props, closeScroll}) {
 		dispatch({
 			type: SET_PLAYER_NAME,
 			name: charName || "",
-			shortName: charNameShort || ""
+			surname: charSurname || ""
 		});
-	}, [charName, charNameShort]);
+	}, [charName, charSurname, dispatch]);
 
 	useEffect(() => {
 		return () => { clearTimeout(curTimeout); }
@@ -65,8 +71,9 @@ function CharacterCreationCustomize({props, closeScroll}) {
 		<div id="charCreateCustomization">
 			<h1>Customize</h1>
 			<div id="characterNameSection">
-				<input id="characterNameShort" type="text" placeholder="Short Name" maxLength="10" value={charNameShort} onChange={(event) => {setCharNameShort(event.target.value);}}></input>
-				<input id="characterName" type="text" placeholder="Full Name" maxLength="24" value={charName} onChange={(event) => {setCharName(event.target.value);}}></input>
+				<input id="characterName" type="text" placeholder={localize("CHARACTER_NAME")} maxLength="10" value={charName} onChange={(event) => {setCharName(event.target.value);}}></input>
+				<input id="characterSurname" type="text" placeholder={localize("CHARACTER_SURNAME")} maxLength="24" value={charSurname} onChange={(event) => {setCharSurname(event.target.value);}}></input>
+				<button id="characterNameRandom" type="button" onClick={randomizeCharacterName}>{localize("BUTTON_RANDOM")}</button>
 			</div>
 			<div id="createCharacterSprite">
 				<div id="characterSpriteHolder">
@@ -78,14 +85,14 @@ function CharacterCreationCustomize({props, closeScroll}) {
 				</div>
 				<div id="characterSpriteOptions">
 					<div>
-						<div className="cursorGlow" onClick={() => {changeCharacterSkin(-1);}}>-</div>
+						<button type="button" onClick={() => {changeCharacterSkin(-1);}}>-</button>
 						<div>Skin</div>
-						<div className="cursorGlow" onClick={() => {changeCharacterSkin(1);}}>+</div>
+						<button type="button" onClick={() => {changeCharacterSkin(1);}}>+</button>
 					</div>
 				</div>
 			</div>
 			<div id="createCharacterButtonHolder">
-					<div className={((charName) && (charNameShort)) ? "cursorGlow" : "inactive"} onClick={finishCustomization}>{localize("BUTTON_START_GAME")}</div>
+					<div className={((charName) && (charSurname)) ? "cursorGlow" : "inactive"} onClick={finishCustomization}>{localize("BUTTON_START_GAME")}</div>
 					<div className="cursorGlow" onClick={cancelCustomization}>{localize("BUTTON_BACK")}</div>
 			</div>
 		</div>

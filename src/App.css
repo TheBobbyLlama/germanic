@@ -55,6 +55,23 @@
   font-weight: normal;
 }
 
+#viewport button {
+  background-color: transparent;
+  border-bottom: Solid 1px rgba(0, 0, 0, 0.5);
+	border-left: Solid 1px rgba(255, 255, 255, 0.5);
+	border-right: Solid 1px rgba(0, 0, 0, 0.5);
+	border-top: Solid 1px rgba(255, 255, 255, 0.5);
+  color: #ffe080;
+  cursor: inherit;
+  font-family: pixel-standard;
+  font-size: 8px;
+}
+
+#viewport button:not(.inactive):hover {
+  color: white;
+  cursor:url(./assets/images/UI/PointerActive.png) 9 0, pointer;
+}
+
 #viewport input[type='text'] {
   background-color: transparent;
 	border-bottom: Solid 1px rgba(255, 255, 255, 0.5);
