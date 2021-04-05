@@ -3,6 +3,7 @@ import { useReducer } from 'react';
 import {
 	SET_PLAYER_CHARACTER,
 	SET_PLAYER_NAME,
+	SET_PLAYER_CUSTOMIZATION,
 } from './actions';
 
 export const reducer = (state, action) => {
@@ -20,6 +21,12 @@ export const reducer = (state, action) => {
 
 			newState.party.player.name = action.name;
 			newState.party.player.surname = action.surname;
+
+			return newState;
+		case SET_PLAYER_CUSTOMIZATION:
+			newState = { ...state};
+
+			newState.party.player.customization = action.customization;
 
 			return newState;
 		default:

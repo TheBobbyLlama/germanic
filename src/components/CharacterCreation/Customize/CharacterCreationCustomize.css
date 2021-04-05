@@ -83,6 +83,7 @@
 #characterSpriteOptions {
 	align-items: center;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 }
 
@@ -90,12 +91,22 @@
 	align-items: center;
 	display: flex;
 	justify-content: center;
+	margin: 2px 0px;
 }
 
 #characterSpriteOptions > div > div:nth-child(2) {
 	color: rgba(255, 255, 255, 0.5);
 	text-align: center;
 	width: 34px;
+}
+
+#characterSpriteOptions button.small {
+	align-items: center;
+	display: flex;
+	height: 12px;
+	justify-content: center;
+	padding: 0px;
+	width: 12px;
 }
 
 #characterNameSection {

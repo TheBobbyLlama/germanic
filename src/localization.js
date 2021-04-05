@@ -132,7 +132,12 @@ const localizationList = [
 			[ "CHARACTER_SKILLS_DESC", "Base skill is Attr/5, with bonuses from upbringing, occupation, and temperament." ],
 			[ "CHARACTER_NAME", "Name" ],
 			[ "CHARACTER_SURNAME", "Surname" ],
-			[ "CHARACTER_NAME_OF", "of {CITY}" ]
+			[ "CHARACTER_NAME_OF", "of {CITY}" ],
+			[ "CUSTOMIZE_SKIN", "Skin" ],
+			[ "CUSTOMIZE_EYES", "Eyes" ],
+			[ "CUSTOMIZE_HAIR_STYLE", "Hair" ],
+			[ "CUSTOMIZE_HAIR_FACIAL", "Beard" ],
+			[ "CUSTOMIZE_HAIR_COLOR", "Color" ],
 		]
 	}
 ];
