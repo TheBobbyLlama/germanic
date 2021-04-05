@@ -3,6 +3,10 @@
 	flex-direction: column;
 }
 
+#charCreateCustomization > h1 {
+	opacity: 0.75;
+}
+
 #charCreateCustomization > *:not(:last-child) {
 	margin-bottom: 4px;
 }

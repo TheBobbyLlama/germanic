@@ -7,7 +7,7 @@ import mHairBald from "../assets/images/sprites/character/hair/m/0f.png";
 const skinColorMap = [
 	{
 		g: {
-			tone: [ 1.000, 0.875, 0.875 ],
+			tone: [ 0.9375, 0.825, 0.8125 ],
 			halfTone: [ 0.753, 0.565, 0.502 ]
 		}
 	},
@@ -15,6 +15,18 @@ const skinColorMap = [
 		g: {
 			tone: [ 0.910, 0.784, 0.753 ],
 			halfTone: [ 0.627, 0.471, 0.376 ]
+		}
+	},
+	{
+		g: {
+			tone: [ 0.8, 0.65, 0.5875 ],
+			halfTone: [ 0.5, 0.35, 0.3 ]
+		}
+	},
+	{
+		g: {
+			tone: [ 0.6875, 0.5675, 0.5 ],
+			halfTone: [ 0.375, 0.3, 0.2875 ]
 		}
 	}
 ];
@@ -28,8 +40,32 @@ const eyeColorMap = [
 	},
 	{
 		b: {
+			tone: [ 0.375, 0.4325, 0.75 ],
+			halfTone: [ 0.125, 0.25, 0.375 ]
+		}
+	},
+	{
+		b: {
+			tone: [ 0.5, 0.625, 0.375 ],
+			halfTone: [ 0.3125, 0.375, 0.25 ]
+		}
+	},
+	{
+		b: {
+			tone: [ 0.5, 0.5, 0.25 ],
+			halfTone: [ 0.25, 0.1875, 0.125 ]
+		}
+	},
+	{
+		b: {
 			tone: [ 0.375, 0.3125, 0.25 ],
 			halfTone: [ 0.25, 0.1875, 0.125 ]
+		}
+	},
+	{
+		b: {
+			tone: [ 0.5, 0.5625, 0.625 ],
+			halfTone: [ 0.25, 0.2725, 0.375 ]
 		}
 	}
 ];
@@ -37,14 +73,32 @@ const eyeColorMap = [
 const hairColorMap = [
 	{
 		r: {
-			tone: [ 0.75, 0.6875, 0.5 ],
+			tone: [ 0.75, 0.7125, 0.5 ],
 			halfTone: [ 0.5, 0.4875, 0.25 ]
+		}
+	},
+	{
+		r: {
+			tone: [ 0.75, 0.45, 0.25 ],
+			halfTone: [ 0.5, 0.35, 0.325 ]
+		}
+	},
+	{
+		r: {
+			tone: [ 0.5, 0.3, 0.2 ],
+			halfTone: [ 0.375, 0.25, 0.1875 ]
 		}
 	},
 	{
 		r: {
 			tone: [ 0.375, 0.3125, 0.25 ],
 			halfTone: [ 0.25, 0.1875, 0.125 ]
+		}
+	},
+	{
+		r: {
+			tone: [ 0.25, 0.2, 0.15 ],
+			halfTone: [ 0.15, 0.125, 0.1 ]
 		}
 	},
 	{
@@ -104,6 +158,20 @@ const characterAtlas = {
 			colorMap: hairColorMap
 		},
 	},
+	beard0f: {
+		m: {
+			name: "beard0f",
+			source: nullImg,
+			colorMap: hairColorMap
+		}
+	},
+	beard0b: {
+		m: {
+			name: "beard0b",
+			source: nullImg,
+			colorMap: hairColorMap
+		}
+	}
 }
 
 const workingCanvas = document.createElement("canvas");
@@ -211,6 +279,10 @@ export const cacheCharacterSprite = (char, key, num, handler) => {
 
 export function getHairList() {
 	return [ "hair0" ];
+}
+
+export function getBeardList() {
+	return [ "beard0" ];
 }
 
 export const getSpriteCount = (char, key) => {

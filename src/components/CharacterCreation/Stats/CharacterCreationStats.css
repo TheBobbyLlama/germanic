@@ -7,6 +7,7 @@
 
 #charCreateStats h1 {
 	margin-bottom: 4px;
+	opacity: 0.75;
 }
 
 #statContainer {

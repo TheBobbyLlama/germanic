@@ -1,5 +1,5 @@
 import localize from "../../../localization";
-import { cacheCharacterSprite, getHairList, getSpriteCount, getCharacterSprite } from "../../../lib/spriteAtlas"
+import { cacheCharacterSprite, getHairList, getBeardList, getSpriteCount, getCharacterSprite } from "../../../lib/spriteAtlas"
 import React, { useState, useEffect } from "react";
 
 import { generateRandomName, generateRandomSurname } from "../../../utils/namegeneration";
@@ -10,16 +10,18 @@ import './CharacterCreationCustomize.css';
 
 function CharacterCreationCustomize({props, closeScroll}) {
 	const hairList = getHairList();
+	const beardList = getBeardList();
 	const [state, dispatch] = useStoreContext();
 	const [charName, setCharName] = useState(state.party.player.name || "");
 	const [charSurname, setCharSurname] = useState(state.party.player.surname || "");
-	const [rotation, setRotation ] = useState(0);
-	const [curSkin, setCurSkin ] = useState(0);
-	const [curEyes, setCurEyes ] = useState(0);
-	const [curHairStyle, setCurHairStyle ] = useState(hairList[0]);
-	const [curHairColor, setCurHairColor ] = useState(0);
-	const [curTimeout, setCurTimeout ] = useState(undefined);
-	const [spritesLoaded, setSpritesLoaded ] = useState(0);
+	const [rotation, setRotation] = useState(0);
+	const [curSkin, setCurSkin] = useState(0);
+	const [curEyes, setCurEyes] = useState(0);
+	const [curHairStyle, setCurHairStyle] = useState(hairList[0]);
+	const [curBeardStyle, setCurBeardStyle] = useState((state.party.player.sex === "SEX_FEMALE") ? null : beardList[0]);
+	const [curHairColor, setCurHairColor] = useState(0);
+	const [curTimeout, setCurTimeout] = useState(undefined);
+	const [spritesLoaded, setSpritesLoaded] = useState(0);
 
 	const randomizeCharacterName = () => {
 		setCharName(generateRandomName(null, state.party.player.sex === "SEX_FEMALE"));
@@ -64,6 +66,15 @@ function CharacterCreationCustomize({props, closeScroll}) {
 		setCurHairStyle(hairList[newStyle]);
 	}
 
+	const changeCharacterBeardStyle = (offset) => {
+		let newStyle = (beardList.indexOf(curBeardStyle) + offset) % beardList.length;
+
+		if (newStyle < 0)
+			newStyle += beardList.length;
+		
+		setCurBeardStyle(beardList[newStyle]);
+	}
+
 	const changeCharacterHairColor = (offset) => {
 		let spriteCount = getSpriteCount(state.party.player, curHairStyle + "f");
 		let newSprite = (curHairColor + offset) % spriteCount;
@@ -75,14 +86,18 @@ function CharacterCreationCustomize({props, closeScroll}) {
 	}
 
 	const finishCustomization = () => {
+		const customization = {
+			skin: curSkin,
+			eyes: curEyes,
+			hairStyle: curHairStyle,
+			hairColor: curHairColor,
+		};
+
+		if (state.party.player.sex !== "SEX_FEMALE") customization.beardStyle = curBeardStyle;
+
 		dispatch({
 			type: SET_PLAYER_CUSTOMIZATION,
-			customization: {
-				skin: curSkin,
-				eyes: curEyes,
-				hairStyle: curHairStyle,
-				hairColor: curHairColor,
-			}
+			customization
 		});
 		closeScroll();
 		setCurTimeout(setTimeout(() => { props.changeMode(-1); }, 500));
@@ -91,6 +106,14 @@ function CharacterCreationCustomize({props, closeScroll}) {
 	const cancelCustomization = () => {
 		closeScroll();
 		setCurTimeout(setTimeout(() => { props.changeMode(0); }, 500));
+	}
+
+	const displayCharacterControls = (name, func) => {
+		return (<div>
+			<button type="button" className="small" onClick={() => {func(-1);}}>-</button>
+			<div>{name}</div>
+			<button type="button" className="small" onClick={() => {func(1);}}>+</button>
+		</div>);
 	}
 
 	const doSpritePreload = (key) => {
@@ -134,6 +157,7 @@ function CharacterCreationCustomize({props, closeScroll}) {
 					<div className="rotateLeft cursorGlow" onClick={() => {changeRotation(-1);}} />
 					<div id="characterSpriteFrame" className={"rotate" + rotation}>
 						<div style={{backgroundImage: `url(${getCharacterSprite(state.party.player, curHairStyle + "b", curHairColor)}`}} />
+						{(state.party.player.sex !== "SEX_FEMALE") ? <div style={{backgroundImage: `url(${getCharacterSprite(state.party.player, curBeardStyle + "b", curHairColor)}`}} /> : <></>}
 						<div style={{backgroundImage: `url(${getCharacterSprite(state.party.player, "skin", curSkin)}`}} />
 						<div style={{backgroundImage: `url(${getCharacterSprite(state.party.player, "eyes", curEyes)}`}} />
 						<div style={{backgroundImage: `url(${getCharacterSprite(state.party.player, curHairStyle + "f", curHairColor)}`}} />
@@ -141,26 +165,11 @@ function CharacterCreationCustomize({props, closeScroll}) {
 					<div className="rotateRight cursorGlow" onClick={() => {changeRotation(1);}} />
 				</div>
 				<div id="characterSpriteOptions">
-					<div>
-						<button type="button" className="small" onClick={() => {changeCharacterSkin(-1);}}>-</button>
-						<div>{localize("CUSTOMIZE_SKIN")}</div>
-						<button type="button" className="small" onClick={() => {changeCharacterSkin(1);}}>+</button>
-					</div>
-					<div>
-						<button type="button" className="small" onClick={() => {changeCharacterEyes(-1);}}>-</button>
-						<div>{localize("CUSTOMIZE_EYES")}</div>
-						<button type="button" className="small" onClick={() => {changeCharacterEyes(1);}}>+</button>
-					</div>
-					<div>
-						<button type="button" className="small" onClick={() => {changeCharacterHairStyle(-1);}}>-</button>
-						<div>{localize("CUSTOMIZE_HAIR_STYLE")}</div>
-						<button type="button" className="small" onClick={() => {changeCharacterHairStyle(1);}}>+</button>
-					</div>
-					<div>
-						<button type="button" className="small" onClick={() => {changeCharacterHairColor(-1);}}>-</button>
-						<div>{localize("CUSTOMIZE_HAIR_COLOR")}</div>
-						<button type="button" className="small" onClick={() => {changeCharacterHairColor(1);}}>+</button>
-					</div>
+					{displayCharacterControls(localize("CUSTOMIZE_SKIN"), changeCharacterSkin)}
+					{displayCharacterControls(localize("CUSTOMIZE_EYES"), changeCharacterEyes)}
+					{displayCharacterControls(localize("CUSTOMIZE_HAIR_STYLE"), changeCharacterHairStyle)}
+					{(state.party.player.sex !== "SEX_FEMALE") ? displayCharacterControls(localize("CUSTOMIZE_HAIR_FACIAL"), changeCharacterBeardStyle) : <></>}
+					{displayCharacterControls(localize("CUSTOMIZE_HAIR_COLOR"), changeCharacterHairColor)}
 				</div>
 			</div>
 			<div id="createCharacterButtonHolder">
