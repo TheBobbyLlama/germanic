@@ -12,9 +12,9 @@ import './CharacterCreationStats.css';
 
 function CharacterCreationStats({props, closeScroll}) {
 	const [state, dispatch] = useStoreContext();
-	const [ character, setCharacter ] = useState(state.party.player || new Character());
-	const [ tooltipText, setToolTipText ] = useState("");
-	const [curTimeout, setCurTimeout ] = useState(undefined);
+	const [character, setCharacter] = useState(state.party?.player || new Character());
+	const [tooltipText, setToolTipText] = useState("");
+	const [curTimeout, setCurTimeout] = useState(undefined);
 
 	const calculateValidOccupations = (sex, family) => {
 		let templates = systemLib.characterBackgroundTemplate;
@@ -53,6 +53,10 @@ function CharacterCreationStats({props, closeScroll}) {
 
 		if (!validOccupations.find(element => element === character.background))
 			delete character.background;
+		
+		delete character.name;
+		delete character.surname;
+		delete character.customization;
 
 		setCharacter(new Character({...character, sex}));			
 	}

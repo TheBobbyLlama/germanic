@@ -1,10 +1,10 @@
-import { useReducer } from 'react';
+import { useReducer } from "react";
 
 import {
 	SET_PLAYER_CHARACTER,
 	SET_PLAYER_NAME,
 	SET_PLAYER_CUSTOMIZATION,
-} from './actions';
+} from "./actions";
 
 export const reducer = (state, action) => {
 	let newState;

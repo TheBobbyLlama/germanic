@@ -15,11 +15,11 @@ function CharacterCreationCustomize({props, closeScroll}) {
 	const [charName, setCharName] = useState(state.party.player.name || "");
 	const [charSurname, setCharSurname] = useState(state.party.player.surname || "");
 	const [rotation, setRotation] = useState(0);
-	const [curSkin, setCurSkin] = useState(0);
-	const [curEyes, setCurEyes] = useState(0);
-	const [curHairStyle, setCurHairStyle] = useState(hairList[0]);
-	const [curBeardStyle, setCurBeardStyle] = useState((state.party.player.sex === "SEX_FEMALE") ? null : beardList[0]);
-	const [curHairColor, setCurHairColor] = useState(0);
+	const [curSkin, setCurSkin] = useState(state.party.player.customization?.skin || 0);
+	const [curEyes, setCurEyes] = useState(state.party.player.customization?.eyes || 0);
+	const [curHairStyle, setCurHairStyle] = useState(state.party.player.customization?.hairStyle || hairList[0]);
+	const [curBeardStyle, setCurBeardStyle] = useState((state.party.player.sex === "SEX_FEMALE") ? null : (state.party.player.customization?.beardStyle || beardList[0]));
+	const [curHairColor, setCurHairColor] = useState(state.party.player.customization?.hairColor || 0);
 	const [curTimeout, setCurTimeout] = useState(undefined);
 	const [spritesLoaded, setSpritesLoaded] = useState(0);
 
@@ -86,19 +86,6 @@ function CharacterCreationCustomize({props, closeScroll}) {
 	}
 
 	const finishCustomization = () => {
-		const customization = {
-			skin: curSkin,
-			eyes: curEyes,
-			hairStyle: curHairStyle,
-			hairColor: curHairColor,
-		};
-
-		if (state.party.player.sex !== "SEX_FEMALE") customization.beardStyle = curBeardStyle;
-
-		dispatch({
-			type: SET_PLAYER_CUSTOMIZATION,
-			customization
-		});
 		closeScroll();
 		setCurTimeout(setTimeout(() => { props.changeMode(-1); }, 500));
 	}
@@ -131,6 +118,22 @@ function CharacterCreationCustomize({props, closeScroll}) {
 			surname: charSurname || ""
 		});
 	}, [charName, charSurname, dispatch]);
+
+	useEffect(() => {
+		const customization = {
+			skin: curSkin,
+			eyes: curEyes,
+			hairStyle: curHairStyle,
+			hairColor: curHairColor,
+		};
+
+		if (state.party.player.sex !== "SEX_FEMALE") customization.beardStyle = curBeardStyle;
+
+		dispatch({
+			type: SET_PLAYER_CUSTOMIZATION,
+			customization
+		});
+	}, [curSkin, curEyes, curHairStyle, curBeardStyle, curHairColor, dispatch]);
 
 	useEffect(() => {
 		return () => { clearTimeout(curTimeout); }
