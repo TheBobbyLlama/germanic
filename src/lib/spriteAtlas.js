@@ -3,6 +3,7 @@ import skinMale from "../assets/images/sprites/character/skin/m.png";
 import skinFemale from "../assets/images/sprites/character/skin/m.png"; // TODO!
 import eyes from "../assets/images/sprites/character/eyes.png";
 import mHairBald from "../assets/images/sprites/character/hair/m/0f.png";
+import mClothingHosen from "../assets/images/sprites/character/clothing/m/hosen.png";
 
 const skinColorMap = [
 	{
@@ -170,6 +171,48 @@ const characterAtlas = {
 			name: "beard0b",
 			source: nullImg,
 			colorMap: hairColorMap
+		}
+	},
+	clothingPeasant: {
+		m: {
+			name: "clothingPeasantMale",
+			source: mClothingHosen,
+			colorMap: [
+				{
+					r: {
+						tone: [ 0.75, 0.75, 0.5 ],
+						halfTone: [ 0.5, 0.5, 0.375 ]
+					},
+					g: {
+						tone: [ 0.3, 0.5, 0.25 ],
+						halfTone: [ 0.2, 0.4, 0.15 ]
+					},
+					b: {
+						tone: [ 0.35, 0.25, 0.2 ],
+						halfTone: [ 0.25, 0.1875, 0.125 ]
+					}
+				}
+			]
+		},
+		f: {
+			name: "clothingPeasantFemale",
+			source: mClothingHosen,
+			colorMap: [
+				{
+					r: {
+						tone: [ 0.75, 0.75, 0.5 ],
+						halfTone: [ 0.5, 0.5, 0.375 ]
+					},
+					g: {
+						tone: [ 0.3, 0.5, 0.25 ],
+						halfTone: [ 0.2, 0.4, 0.15 ]
+					},
+					b: {
+						tone: [ 0.35, 0.25, 0.2 ],
+						halfTone: [ 0.25, 0.1875, 0.125 ]
+					}
+				}
+			]
 		}
 	}
 }

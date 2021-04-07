@@ -20,8 +20,8 @@ function NewGame({transitionCallback}) {
 
 	return (
 		<div id="newGame">
-			{(creationMode === 0) ? <MenuScroll MyComponent={CharacterCreationStats} height={284} width={420} delay={(lastMode >= 0) ? 200 : 500} props={{changeMode}} /> : <></>}
-			{(creationMode === 1) ? <MenuScroll MyComponent={CharacterCreationCustomize} height={284} width={420} delay={200} props={{changeMode}} /> : <></>}
+			{(creationMode === 0) ? <MenuScroll MyComponent={CharacterCreationStats} height={284} width={400} delay={(lastMode >= 0) ? 200 : 500} props={{changeMode}} /> : <></>}
+			{(creationMode === 1) ? <MenuScroll MyComponent={CharacterCreationCustomize} height={200} width={300} delay={200} props={{changeMode}} /> : <></>}
 		</div>
 	);
 }

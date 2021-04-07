@@ -147,6 +147,8 @@ function CharacterCreationCustomize({props, closeScroll}) {
 		doSpritePreload(hairList[i] + "b");
 	}
 
+	cacheCharacterSprite(state.party.player, "clothingPeasant", 0, () => { setSpritesLoaded(spritesLoaded + 1); });
+
 	return (
 		<div id="charCreateCustomization">
 			<h1>Customize</h1>
@@ -162,8 +164,10 @@ function CharacterCreationCustomize({props, closeScroll}) {
 						<div style={{backgroundImage: `url(${getCharacterSprite(state.party.player, curHairStyle + "b", curHairColor)}`}} />
 						{(state.party.player.sex !== "SEX_FEMALE") ? <div style={{backgroundImage: `url(${getCharacterSprite(state.party.player, curBeardStyle + "b", curHairColor)}`}} /> : <></>}
 						<div style={{backgroundImage: `url(${getCharacterSprite(state.party.player, "skin", curSkin)}`}} />
-						<div style={{backgroundImage: `url(${getCharacterSprite(state.party.player, "eyes", curEyes)}`}} />
 						<div style={{backgroundImage: `url(${getCharacterSprite(state.party.player, curHairStyle + "f", curHairColor)}`}} />
+						<div style={{backgroundImage: `url(${getCharacterSprite(state.party.player, "clothingPeasant", 0)}`}} />
+						{(state.party.player.sex !== "SEX_FEMALE") ? <div style={{backgroundImage: `url(${getCharacterSprite(state.party.player, curBeardStyle + "f", curHairColor)}`}} /> : <></>}
+						<div style={{backgroundImage: `url(${getCharacterSprite(state.party.player, "eyes", curEyes)}`}} />
 					</div>
 					<div className="rotateRight cursorGlow" onClick={() => {changeRotation(1);}} />
 				</div>
